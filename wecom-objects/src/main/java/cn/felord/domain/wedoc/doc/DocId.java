@@ -15,13 +15,36 @@
 
 package cn.felord.domain.wedoc.doc;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
+ * The type Doc id.
+ *
  * @author dax
- * @since 2023/7/19
+ * @since 2023 /7/19
  */
-@Data
+@ToString
+@Getter
 public class DocId {
     private final String docid;
+
+    /**
+     * Instantiates a new Doc id.
+     *
+     * @param docid the docid
+     */
+    public DocId(String docid) {
+        this.docid = docid;
+    }
+
+    /**
+     * From doc id.
+     *
+     * @param docid the docid
+     * @return the doc id
+     */
+    public static DocId from(String docid) {
+        return new DocId(docid);
+    }
 }

@@ -15,13 +15,36 @@
 
 package cn.felord.domain.common;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
+ * The type Form id.
+ *
  * @author dax
- * @since 2023/5/24 14:54
+ * @since 2023 /5/24 14:54
  */
-@Data
+@ToString
+@Getter
 public class FormId {
     private final String formid;
+
+    /**
+     * Instantiates a new Form id.
+     *
+     * @param formid the formid
+     */
+    public FormId(String formid) {
+        this.formid = formid;
+    }
+
+    /**
+     * From form id.
+     *
+     * @param formid the formid
+     * @return the form id
+     */
+    public static FormId from(String formid) {
+        return new FormId(formid);
+    }
 }
