@@ -43,6 +43,6 @@ public class TextTipContent {
     }
 
     TextTipContent(String content) {
-        this.plainText = new PlainText(content);
+        this(new PlainText(content));
     }
 }

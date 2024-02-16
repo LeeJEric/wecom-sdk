@@ -26,7 +26,7 @@ import java.util.List;
  * The type Tips content.
  *
  * @author dax
- * @since 2024/1/24
+ * @since 2024 /1/24
  */
 @ToString
 @Getter
@@ -47,7 +47,7 @@ public class TipsContent {
     }
 
     /**
-     * Zh cn tips content.
+     * 中文提示
      *
      * @param subText the sub text
      * @return the tips content
@@ -56,6 +56,16 @@ public class TipsContent {
      */
     public static TipsContent zhCN(List<TipSubText<?>> subText) {
         return from("zh_CN", subText);
+    }
+
+    /**
+     * 英文提示
+     *
+     * @param subText the sub text
+     * @return the tips content
+     */
+    public static TipsContent en(List<TipSubText<?>> subText) {
+        return from("en", subText);
     }
 
     /**
