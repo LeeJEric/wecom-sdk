@@ -41,9 +41,9 @@ public class Image implements WorkBenchBody {
      * @param jumpUrl  the jump url
      */
     @JsonCreator
-    public Image(@JsonProperty("url") String url,
-                 @JsonProperty("pagepath") String pagepath,
-                 @JsonProperty("jump_url") String jumpUrl) {
+    Image(@JsonProperty("url") String url,
+          @JsonProperty("pagepath") String pagepath,
+          @JsonProperty("jump_url") String jumpUrl) {
         this.url = url;
         this.pagepath = pagepath;
         this.jumpUrl = jumpUrl;

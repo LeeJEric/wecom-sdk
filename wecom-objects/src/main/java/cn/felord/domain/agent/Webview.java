@@ -15,6 +15,7 @@
 
 package cn.felord.domain.agent;
 
+import cn.felord.enumeration.WebViewHeight;
 import lombok.Data;
 
 /**
@@ -30,5 +31,5 @@ public class Webview implements WorkBenchBody {
     private Boolean hideTitle;
     private Boolean enableWebviewClick;
     private String url;
-    private String height;
+    private WebViewHeight height;
 }

@@ -214,10 +214,17 @@ public class ApprovalApplyRequest {
                     .getChildren();
             List<TableValue.Wrapper> collect = tableValues.stream()
                     .map(tableVal ->
-                            IntStream.range(0, tableVal.size())
-                                    .mapToObj(index ->
-                                            ApplyContentData.from(children.get(index).getProperty(), tableVal.get(index)))
-                                    .collect(Collectors.toList()))
+                            {
+                                int tableValSize = tableVal.size();
+                                if (tableValSize != children.size()) {
+                                    throw new IllegalArgumentException("table controls size do not match table dataValues size");
+                                }
+                                return IntStream.range(0, tableValSize)
+                                        .mapToObj(index ->
+                                                ApplyContentData.from(children.get(index).getProperty(), tableVal.get(index)))
+                                        .collect(Collectors.toList());
+                            }
+                    )
                     .map(TableValue.Wrapper::new)
                     .collect(Collectors.toList());
             return tmpControl.getProperty().toData(new TableValue(collect));

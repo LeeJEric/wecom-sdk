@@ -13,38 +13,47 @@
  *  limitations under the License.
  */
 
-package cn.felord.domain.webhook.card;
+package cn.felord.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.Arrays;
+
 /**
- * The enum Horizontal content type.
+ * WebView 高度
  *
- * @author felord.cn
- * @since 2021/9/3 15:16
+ * @author dax
+ * @since 2022 /10/25
  */
-public enum HorizontalContentType {
+public enum WebViewHeight {
     /**
-     * 或不填代表不是链接
+     * 点击推事件
      */
-    TEXT(0),
+    SINGLE_ROW("single_row"),
     /**
-     * 跳转url
+     * 跳转URL
      */
-    URL(1),
-    /**
-     * 下载附件
-     */
-    ATTACHMENT(2),
-    /**
-     * 代表点击跳转成员详情
-     */
-    AT_STAFF(3);
+    DOUBLE_ROW("double_row");
 
-    private final int type;
+    private final String type;
 
-    HorizontalContentType(int type) {
+    WebViewHeight(String type) {
         this.type = type;
+    }
+
+    /**
+     * Deserialize WebViewHeight
+     *
+     * @param type the type
+     * @return the add ways
+     */
+    @JsonCreator
+    public static WebViewHeight deserialize(String type) {
+        return Arrays.stream(WebViewHeight.values())
+                .filter(webViewHeight -> webViewHeight.type.equals(type))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -53,7 +62,7 @@ public enum HorizontalContentType {
      * @return the type
      */
     @JsonValue
-    public int getType() {
+    public String getType() {
         return type;
     }
 }
