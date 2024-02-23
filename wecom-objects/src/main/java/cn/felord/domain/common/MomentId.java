@@ -18,10 +18,22 @@ package cn.felord.domain.common;
 import lombok.Data;
 
 /**
+ * The type Moment id.
+ *
  * @author dax
- * @since 2023/5/24 16:04
+ * @since 2023 /5/24 16:04
  */
 @Data
 public class MomentId {
     private final String momentId;
+
+    /**
+     * Of moment id.
+     *
+     * @param momentId the moment id
+     * @return the moment id
+     */
+    public static MomentId of(String momentId) {
+        return new MomentId(momentId);
+    }
 }

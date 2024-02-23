@@ -24,7 +24,7 @@ import lombok.ToString;
  * The type Group id.
  *
  * @author dax
- * @since 2024/10/5
+ * @since 2024 /10/5
  */
 @ToString
 @Getter
@@ -39,5 +39,15 @@ public class GroupId {
     @JsonCreator
     public GroupId(@JsonProperty("group_id") String groupId) {
         this.groupId = groupId;
+    }
+
+    /**
+     * Of group id.
+     *
+     * @param groupId the group id
+     * @return the group id
+     */
+    public static GroupId of(String groupId) {
+        return new GroupId(groupId);
     }
 }

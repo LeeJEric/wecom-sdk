@@ -16,12 +16,25 @@
 package cn.felord.domain.common;
 
 import lombok.Data;
+import lombok.NonNull;
 
 /**
+ * The type Msg id.
+ *
  * @author dax
- * @since 2023/5/24 15:34
+ * @since 2023 /5/24 15:34
  */
 @Data
 public class MsgId {
     private final String msgid;
+
+    /**
+     * Of msg id.
+     *
+     * @param msgid the msgid
+     * @return the msg id
+     */
+    public static MsgId of(@NonNull String msgid) {
+        return new MsgId(msgid);
+    }
 }

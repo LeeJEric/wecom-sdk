@@ -44,7 +44,18 @@ public class FormId {
      * @param formid the formid
      * @return the form id
      */
+    @Deprecated
     public static FormId from(String formid) {
+        return new FormId(formid);
+    }
+
+    /**
+     * Of form id.
+     *
+     * @param formid the formid
+     * @return the form id
+     */
+    public static FormId of(String formid) {
         return new FormId(formid);
     }
 }
