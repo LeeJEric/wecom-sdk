@@ -104,7 +104,7 @@ void webHooks()throws IOException{
 <dependency>
     <groupId>cn.felord</groupId>
     <artifactId>wecom-sdk</artifactId>
-    <version>1.2.6</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
@@ -115,7 +115,7 @@ void webHooks()throws IOException{
 <dependency>
     <groupId>cn.felord</groupId>
     <artifactId>rx-wecom-sdk</artifactId>
-    <version>1.2.6</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
@@ -127,7 +127,7 @@ void webHooks()throws IOException{
 <dependency>
     <groupId>cn.felord</groupId>
     <artifactId>wecom-sdk</artifactId>
-    <version>1.2.5</version>
+    <version>1.2.7</version>
     <exclusions>
         <exclusion>
             <groupId>com.squareup.okhttp3</groupId>
@@ -157,12 +157,6 @@ void webHooks()throws IOException{
 ## 📚文档
 
 中文文档：[https://felord.cn/wecom/overview.html](https://felord.cn/wecom/overview.html)
-
-## 📱微信扫码加入交流群
-
-<div align="center" style="margin-bottom: 10px">
-    <img src="contact_me_qr.png" height="30%" width="30%" alt="微信扫码入群"/>
-</div>
 
 ## 🎉特别鸣谢
 
