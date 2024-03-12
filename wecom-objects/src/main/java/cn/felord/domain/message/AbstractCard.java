@@ -19,6 +19,7 @@ import cn.felord.domain.webhook.card.CardSource;
 import cn.felord.domain.webhook.card.MainTitle;
 import cn.felord.enumeration.TemplateCardType;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * The type Abstract card.
@@ -27,6 +28,7 @@ import lombok.Getter;
  * @see TemplateCardBuilders
  * @since 2021 /11/24
  */
+@ToString
 @Getter
 public abstract class AbstractCard {
     private final TemplateCardType cardType;

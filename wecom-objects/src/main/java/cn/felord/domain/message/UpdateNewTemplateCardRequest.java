@@ -17,6 +17,7 @@ package cn.felord.domain.message;
 
 import cn.felord.enumeration.BoolEnum;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * 更新为新的卡片
@@ -26,6 +27,7 @@ import lombok.Getter;
  * @see TemplateReplaceCardBuilders
  * @since 2022 /2/7 10:55
  */
+@ToString
 @Getter
 public class UpdateNewTemplateCardRequest<C extends AbstractReplaceCard> extends AbstractUpdateTemplateCardRequest {
     private final BoolEnum enableIdTrans;

@@ -17,6 +17,7 @@ package cn.felord.domain.message;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.Set;
 
@@ -26,6 +27,7 @@ import java.util.Set;
  * @author dax
  * @since 2024/2/7 10:16
  */
+@ToString
 @Getter
 public class UpdateDisabledBtnRequest extends AbstractUpdateTemplateCardRequest {
     private Set<Integer> tagids;
