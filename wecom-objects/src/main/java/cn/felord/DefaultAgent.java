@@ -59,7 +59,7 @@ public class DefaultAgent implements AgentDetails {
      * @param agentId the agent id
      * @return the agent details
      */
-    public static AgentDetails of(@NonNull String corpId, @NonNull String secret, @NonNull String agentId) {
+    public static AgentDetails of(String corpId, String secret, String agentId) {
         return new DefaultAgent(corpId, secret, agentId);
     }
 
