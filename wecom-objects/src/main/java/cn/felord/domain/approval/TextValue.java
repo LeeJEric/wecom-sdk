@@ -15,6 +15,7 @@
 
 package cn.felord.domain.approval;
 
+import cn.felord.utils.StringUtils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -48,7 +49,7 @@ public class TextValue implements ContentDataValue {
      * @return the text value
      */
     public static TextValue from(String text) {
-        return new TextValue(text);
+        return StringUtils.hasText(text) ? new TextValue(text) : nullValue();
     }
 
     /**
@@ -57,6 +58,6 @@ public class TextValue implements ContentDataValue {
      * @return the text value
      */
     public static TextValue nullValue() {
-        return from(null);
+        return from("");
     }
 }
