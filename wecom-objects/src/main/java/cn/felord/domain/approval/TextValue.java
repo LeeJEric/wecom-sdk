@@ -58,6 +58,6 @@ public class TextValue implements ContentDataValue {
      * @return the text value
      */
     public static TextValue nullValue() {
-        return from("");
+        return new TextValue("");
     }
 }

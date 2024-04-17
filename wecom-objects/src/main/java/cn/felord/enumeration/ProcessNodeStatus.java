@@ -24,62 +24,55 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 import java.util.Arrays;
 
 /**
- * The NodeStatus
+ * 节点状态
  *
  * @author felord
  * @since 2021 /11/23 17:01
  */
 @XStreamConverter(NumberEnumConverter.class)
-public enum NodeStatus implements CallbackNumberEnum {
-
+public enum ProcessNodeStatus implements CallbackNumberEnum {
 
     /**
      * 审批中
      */
     APPROVAL(1),
     /**
-     * 已通过
+     * 同意
      */
     ACCEPTED(2),
     /**
-     * 已驳回
+     * 驳回
      */
     REJECTED(3),
     /**
-     * 已转审
+     * 转审
      */
     TRANSFERRED(4),
     /**
-     * 已退回（仅在查询详情返回）
+     * 回退给指定审批人
      */
     RETURNED(11),
     /**
-     * 已加签（仅在查询详情返回）
+     * 加签
      */
     APPEND_ASSIGNEE(12),
     /**
-     * 已同意并加签（仅在查询详情返回）
+     * 加签并同意
      */
-    APPEND_AND_AGREE(13);
+    APPEND_AND_AGREE(13),
+    /**
+     * 已办理
+     */
+    FINISHED(14),
+    /**
+     * 已转交
+     */
+    CLAIMED(15);
 
     private final int type;
 
-    NodeStatus(int type) {
+    ProcessNodeStatus(int type) {
         this.type = type;
-    }
-
-    /**
-     * Deserialize NodeStatus.
-     *
-     * @param type the type
-     * @return the button type
-     */
-    @JsonCreator
-    public static NodeStatus deserialize(int type) {
-        return Arrays.stream(NodeStatus.values())
-                .filter(answerStatus -> answerStatus.type == type)
-                .findFirst()
-                .orElse(null);
     }
 
     /**
@@ -88,7 +81,22 @@ public enum NodeStatus implements CallbackNumberEnum {
      * @return the type
      */
     @JsonValue
+    @Override
     public int getType() {
         return type;
+    }
+
+    /**
+     * Deserialize button type.
+     *
+     * @param type the type
+     * @return the button type
+     */
+    @JsonCreator
+    public static ProcessNodeStatus deserialize(int type) {
+        return Arrays.stream(ProcessNodeStatus.values())
+                .filter(formItemStatus -> formItemStatus.type == type)
+                .findFirst()
+                .orElse(null);
     }
 }

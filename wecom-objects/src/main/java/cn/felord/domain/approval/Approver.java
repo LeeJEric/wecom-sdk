@@ -23,11 +23,14 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The type Approver.
+ * 审批人，
+ * <p>
+ * 已过时，新的审批人抄送人机制
  *
  * @author dax
- * @since 2024/5/25
+ * @since 2024 /5/25
  */
+@Deprecated
 @ToString
 @Getter
 public class Approver {

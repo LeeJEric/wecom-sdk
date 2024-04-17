@@ -25,6 +25,7 @@ import cn.felord.domain.approval.ApprovalTempUpdateRequest;
 import cn.felord.domain.approval.ApprovalThirdNo;
 import cn.felord.domain.approval.ApprovalTmpDetailResponse;
 import cn.felord.domain.approval.OpenApprovalData;
+import cn.felord.domain.approval.ProcessApplyRequest;
 import cn.felord.domain.approval.SpNoListRequest;
 import cn.felord.domain.approval.SpNoListResponse;
 import cn.felord.domain.approval.UserQuotaSettingRequest;
@@ -89,9 +90,21 @@ public interface ApprovalApi {
      *
      * @param request the request
      * @return the generic response
+     * @deprecated 使用未过时接口替代
      */
     @POST("oa/applyevent")
+    @Deprecated
     Single<GenericResponse<String>> applyEvent(@Body ApprovalApplyRequest request);
+
+    /**
+     * 提交审批申请
+     *
+     * @param request the request
+     * @return the generic response
+     * @since 1.2.7
+     */
+    @POST("oa/applyevent")
+    Single<GenericResponse<String>> applyEvent(@Body ProcessApplyRequest request);
 
     /**
      * 批量获取审批单号

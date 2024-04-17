@@ -15,6 +15,7 @@
 
 package cn.felord.domain.callback;
 
+import cn.felord.domain.approval.ProcessList;
 import cn.felord.enumeration.SpStatus;
 import cn.felord.enumeration.StatusChangeEvent;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -72,6 +73,11 @@ public class ApprovalInfo {
      */
     @XStreamImplicit(itemFieldName = "Notifyer")
     private List<CallbackUserId> notifyer;
+    /**
+     * 审批流程列表
+     */
+    @XStreamAlias("ProcessList")
+    private ProcessList processList;
     /**
      * 非自建应用审批，审批申请备注信息
      */
