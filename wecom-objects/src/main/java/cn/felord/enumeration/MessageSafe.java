@@ -29,13 +29,17 @@ import java.util.Arrays;
 public enum MessageSafe {
 
     /**
-     * False bool enum.
+     * 可对外分享
      */
     SHARED(0),
     /**
-     * True bool enum.
+     * 表示不能分享且内容显示水印
      */
-    UN_SHARED(1);
+    UN_SHARED(1),
+    /**
+     * 企业内部分享
+     */
+    INTERNAL(2);
 
     private final int type;
 
