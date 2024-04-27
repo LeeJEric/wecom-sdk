@@ -24,7 +24,7 @@ import lombok.ToString;
  * The type Link tip content.
  *
  * @author dax
- * @since 2024/1/24
+ * @since 2024 /1/24
  */
 @ToString
 @Getter
@@ -39,5 +39,15 @@ public class LinkTipContent {
     @JsonCreator
     LinkTipContent(@JsonProperty("link") LinkSubText link) {
         this.link = link;
+    }
+
+    /**
+     * Instantiates a new Link tip content.
+     *
+     * @param title the title
+     * @param url   the url
+     */
+    LinkTipContent(String title, String url) {
+        this(new LinkSubText(title, url));
     }
 }

@@ -22,8 +22,10 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
+ * The type Media id.
+ *
  * @author dax
- * @since 2021/11/22 15:01
+ * @since 2021 /11/22 15:01
  */
 @ToString
 @Getter
@@ -31,8 +33,23 @@ public class MediaId {
     @XStreamAlias("MediaId")
     private final String mediaId;
 
+    /**
+     * Instantiates a new Media id.
+     *
+     * @param mediaId the media id
+     */
     @JsonCreator
     public MediaId(@JsonProperty("media_id") String mediaId) {
         this.mediaId = mediaId;
+    }
+
+    /**
+     * Of media id.
+     *
+     * @param mediaId the media id
+     * @return the media id
+     */
+    public static MediaId of(String mediaId) {
+        return new MediaId(mediaId);
     }
 }

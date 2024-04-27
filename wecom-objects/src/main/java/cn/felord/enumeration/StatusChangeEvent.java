@@ -63,7 +63,27 @@ public enum StatusChangeEvent implements CallbackNumberEnum {
     /**
      * 添加备注
      */
-    MARK(10);
+    MARK(10),
+    /**
+     * 回退给指定审批人
+     */
+    RETURNED(11),
+    /**
+     * 添加审批人
+     */
+    APPEND_ASSIGNEE(12),
+    /**
+     * 加签并同意
+     */
+    APPEND_AND_AGREE(13),
+    /**
+     * 已办理
+     */
+    FINISHED(14),
+    /**
+     * 已转交
+     */
+    CLAIMED(15);
 
     private final int type;
 

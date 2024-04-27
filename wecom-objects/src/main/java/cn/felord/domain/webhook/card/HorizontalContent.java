@@ -16,6 +16,7 @@
 package cn.felord.domain.webhook.card;
 
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * 二级标题 文本列表
@@ -25,6 +26,7 @@ import lombok.Getter;
  */
 
 @Getter
+@ToString
 public abstract class HorizontalContent {
     private final HorizontalContentType type;
     private final String keyname;

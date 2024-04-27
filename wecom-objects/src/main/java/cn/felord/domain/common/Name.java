@@ -24,7 +24,7 @@ import lombok.ToString;
  * The type Name.
  *
  * @author dax
- * @since 2024/10/5
+ * @since 2024 /10/5
  */
 @ToString
 @Getter
@@ -39,5 +39,15 @@ public class Name {
     @JsonCreator
     public Name(@JsonProperty("name") String name) {
         this.name = name;
+    }
+
+    /**
+     * Of name.
+     *
+     * @param name the name
+     * @return the name
+     */
+    public static Name of(String name) {
+        return new Name(name);
     }
 }

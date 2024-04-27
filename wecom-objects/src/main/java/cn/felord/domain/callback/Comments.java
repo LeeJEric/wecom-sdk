@@ -32,6 +32,7 @@ public class Comments {
     private CallbackUserId commentUserInfo;
     @XStreamAlias("CommentTime")
     private Instant commentTime;
+    //todo 备注不太对 有空研究
     @XStreamAlias("CommentContent")
     private String commentContent;
     @XStreamAlias("CommentId")

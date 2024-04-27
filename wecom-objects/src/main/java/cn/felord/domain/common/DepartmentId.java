@@ -18,10 +18,22 @@ package cn.felord.domain.common;
 import lombok.Data;
 
 /**
+ * The type Department id.
+ *
  * @author dax
- * @since 2023/5/24 15:57
+ * @since 2023 /5/24 15:57
  */
 @Data
 public class DepartmentId {
     private final Long departmentId;
+
+    /**
+     * Of department id.
+     *
+     * @param departmentId the department id
+     * @return the department id
+     */
+    public static DepartmentId of(Long departmentId) {
+        return new DepartmentId(departmentId);
+    }
 }

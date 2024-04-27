@@ -24,4 +24,8 @@ import lombok.Data;
 @Data
 public class ProductId {
     private final String productId;
+
+    public static ProductId of(String productId) {
+        return new ProductId(productId);
+    }
 }

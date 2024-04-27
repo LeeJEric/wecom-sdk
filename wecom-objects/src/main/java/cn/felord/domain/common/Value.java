@@ -27,7 +27,7 @@ import lombok.ToString;
  */
 @ToString
 @Getter
-public class SingleText {
+public class Value {
     private final String value;
 
     /**
@@ -36,7 +36,17 @@ public class SingleText {
      * @param value the value
      */
     @JsonCreator
-    public SingleText(@JsonProperty("value") String value) {
+    public Value(@JsonProperty("value") String value) {
         this.value = value;
+    }
+
+    /**
+     * Of single text.
+     *
+     * @param value the value
+     * @return the single text
+     */
+    public static Value of(String value) {
+        return new Value(value);
     }
 }

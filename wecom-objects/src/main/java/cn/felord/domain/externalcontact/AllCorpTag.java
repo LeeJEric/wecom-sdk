@@ -21,16 +21,30 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
+ * The type All corp tag.
+ *
  * @author dax
- * @since 2021/8/13 18:39
+ * @since 2021 /8/13 18:39
  */
 @Getter
 public class AllCorpTag implements CorpTagIterator {
     private final Set<String> groupId;
     private final Set<String> tagId;
 
+    /**
+     * Instantiates a new All corp tag.
+     */
     public AllCorpTag() {
         this.groupId = Collections.emptySet();
         this.tagId = Collections.emptySet();
+    }
+
+    /**
+     * Query all corp tag.
+     *
+     * @return the all corp tag
+     */
+    public static AllCorpTag query() {
+        return new AllCorpTag();
     }
 }

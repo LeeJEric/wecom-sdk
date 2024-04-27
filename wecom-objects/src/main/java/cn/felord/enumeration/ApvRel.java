@@ -15,6 +15,7 @@
 
 package cn.felord.enumeration;
 
+
 import cn.felord.xml.convert.CallbackNumberEnum;
 import cn.felord.xml.convert.NumberEnumConverter;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -24,71 +25,49 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 import java.util.Arrays;
 
 /**
- * The NodeStatus
+ * 多人审批方式
  *
- * @author felord
- * @since 2021 /11/23 17:01
+ * @author dax
+ * @since 2021 /9/8 10:47
  */
 @XStreamConverter(NumberEnumConverter.class)
-public enum NodeStatus implements CallbackNumberEnum {
+public enum ApvRel implements CallbackNumberEnum {
+    /**
+     * 会签
+     */
+    ALL(1),
+    /**
+     * 或签
+     */
+    OR(2),
+    /**
+     * 依次审批
+     */
+    SEQ(3);
 
+    private final int mode;
 
-    /**
-     * 审批中
-     */
-    APPROVAL(1),
-    /**
-     * 已通过
-     */
-    ACCEPTED(2),
-    /**
-     * 已驳回
-     */
-    REJECTED(3),
-    /**
-     * 已转审
-     */
-    TRANSFERRED(4),
-    /**
-     * 已退回（仅在查询详情返回）
-     */
-    RETURNED(11),
-    /**
-     * 已加签（仅在查询详情返回）
-     */
-    APPEND_ASSIGNEE(12),
-    /**
-     * 已同意并加签（仅在查询详情返回）
-     */
-    APPEND_AND_AGREE(13);
+    ApvRel(int mode) {
+        this.mode = mode;
+    }
 
-    private final int type;
-
-    NodeStatus(int type) {
-        this.type = type;
+    @JsonValue
+    public int getType() {
+        return mode;
     }
 
     /**
-     * Deserialize NodeStatus.
+     * Deserialize approver node mode.
      *
-     * @param type the type
-     * @return the button type
+     * @param mode the mode
+     * @return the approver node mode
      */
     @JsonCreator
-    public static NodeStatus deserialize(int type) {
-        return Arrays.stream(NodeStatus.values())
-                .filter(answerStatus -> answerStatus.type == type)
+    public static ApvRel deserialize(int mode) {
+        return Arrays.stream(ApvRel.values())
+                .filter(contactType -> contactType.mode == mode)
                 .findFirst()
                 .orElse(null);
     }
 
-    /**
-     * Gets type.
-     *
-     * @return the type
-     */
-    @JsonValue
-    public int getType() {
-        return type;
-    }
 }

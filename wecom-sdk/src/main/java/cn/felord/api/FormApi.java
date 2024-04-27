@@ -35,6 +35,8 @@ public interface FormApi {
     /**
      * 创建收集表
      *
+     * 已过时，不带校验
+     *
      * @param request the request
      * @return the generic response
      * @throws WeComException the weComException
