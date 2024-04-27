@@ -46,7 +46,7 @@ public class BankAccountValue implements ContentDataValue {
     }
 
     /**
-     * 官方尚未支持
+     * 银行账户控件赋值
      *
      * @param accountType   the account type
      * @param accountName   the account name
