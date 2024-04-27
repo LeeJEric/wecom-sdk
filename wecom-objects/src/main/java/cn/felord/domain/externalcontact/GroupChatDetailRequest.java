@@ -15,14 +15,43 @@
 
 package cn.felord.domain.externalcontact;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
+ * The type Group chat detail request.
+ *
  * @author dax
- * @since 2021/7/15 19:46
+ * @since 2021 /7/15 19:46
  */
-@Data
-public abstract class GroupChatDetailRequest {
+@ToString
+@Getter
+public class GroupChatDetailRequest {
     private final String chatId;
     private final Integer needName;
+
+    private GroupChatDetailRequest(String chatId, Integer needName) {
+        this.chatId = chatId;
+        this.needName = needName;
+    }
+
+    /**
+     * 需要返回群成员的名字
+     *
+     * @param chatId the chat id
+     * @return the group chat detail request
+     */
+    public static GroupChatDetailRequest withName(String chatId) {
+        return new GroupChatDetailRequest(chatId, 1);
+    }
+
+    /**
+     * 不需要返回群成员的名字
+     *
+     * @param chatId the chat id
+     * @return the group chat detail request
+     */
+    public static GroupChatDetailRequest withoutName(String chatId) {
+        return new GroupChatDetailRequest(chatId, 0);
+    }
 }

@@ -25,19 +25,19 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum HorizontalContentType {
     /**
-     * Text.
+     * 或不填代表不是链接
      */
     TEXT(0),
     /**
-     * Url.
+     * 跳转url
      */
     URL(1),
     /**
-     * Attachment.
+     * 下载附件
      */
     ATTACHMENT(2),
     /**
-     * At staff.
+     * 代表点击跳转成员详情
      */
     AT_STAFF(3);
 

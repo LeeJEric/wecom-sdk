@@ -16,7 +16,7 @@
 package cn.felord.domain.contactbook.user;
 
 import cn.felord.domain.common.Miniprogram;
-import cn.felord.domain.common.SingleText;
+import cn.felord.domain.common.Value;
 import lombok.Data;
 
 /**
@@ -28,5 +28,5 @@ public class ExternalAttrItem {
     private String name;
     private Miniprogram miniprogram;
     private Web web;
-    private SingleText text;
+    private Value text;
 }

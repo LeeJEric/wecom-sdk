@@ -23,6 +23,7 @@ import cn.felord.domain.webhook.card.MainTitle;
 import cn.felord.domain.webhook.card.QuoteArea;
 import cn.felord.enumeration.TemplateCardType;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ import java.util.List;
  * @author felord
  * @since 2021/11/23 12:19
  */
+@ToString
 @Getter
 public class ButtonMessageTemplateCard extends MessageTemplateCard {
     private final String subTitleText;

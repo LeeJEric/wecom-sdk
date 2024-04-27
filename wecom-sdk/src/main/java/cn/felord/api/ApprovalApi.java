@@ -30,7 +30,7 @@ import java.util.List;
  * 企业微信审批
  *
  * @author dax
- * @since 2024/5/25 14:18
+ * @since 2024 /5/25 14:18
  */
 public interface ApprovalApi {
 
@@ -82,9 +82,22 @@ public interface ApprovalApi {
      * @param request the request
      * @return the generic response
      * @throws WeComException the weComException
+     * @deprecated 使用未过时接口替代
      */
     @POST("oa/applyevent")
+    @Deprecated
     GenericResponse<String> applyEvent(@Body ApprovalApplyRequest request) throws WeComException;
+
+    /**
+     * 提交审批申请
+     *
+     * @param request the request
+     * @return the generic response
+     * @throws WeComException the we com exception
+     * @since 1.2.7
+     */
+    @POST("oa/applyevent")
+    GenericResponse<String> applyEvent(@Body ProcessApplyRequest request) throws WeComException;
 
     /**
      * 批量获取审批单号

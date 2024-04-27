@@ -37,16 +37,20 @@ import java.util.Objects;
  * The type Token interceptor.
  *
  * @author dax
- * @since 2024/5/22 14:59
+ * @since 2024 /5/22 14:59
  */
 public class TokenInterceptor implements Interceptor {
     private static final String INVALID_ACCESS_TOKEN = "42001";
+    /**
+     * The constant MAPPER.
+     */
     public static final ObjectMapper MAPPER = JacksonObjectMapperFactory.create();
     private static final MediaType JSON_UTF_8 = MediaType.parse("application/json; charset=UTF-8");
     private static final MediaType JSON = MediaType.parse("application/json");
     private static final String ERROR_CODE_HEADER = "error-code";
     private final TokenApi tokenApi;
     private final String tokenParam;
+    private final boolean debug;
 
     /**
      * Instantiates a new Token interceptor.
@@ -54,8 +58,19 @@ public class TokenInterceptor implements Interceptor {
      * @param tokenApi the token api
      */
     public TokenInterceptor(TokenApi tokenApi) {
+        this(tokenApi, false);
+    }
+
+    /**
+     * Instantiates a new Token interceptor.
+     *
+     * @param tokenApi the token api
+     * @param debug    the debug
+     */
+    public TokenInterceptor(TokenApi tokenApi, boolean debug) {
         this.tokenApi = tokenApi;
         this.tokenParam = this.determineTokenParam(tokenApi.getClass());
+        this.debug = debug;
     }
 
     @NotNull
@@ -98,11 +113,19 @@ public class TokenInterceptor implements Interceptor {
         Request request = chain.request();
         HttpUrl oldHttpUrl = request.url();
         String tokenResponse = tokenApi.getToken();
+        HttpUrl.Builder builder = oldHttpUrl.newBuilder()
+                .addQueryParameter(tokenParam, tokenResponse);
+
+        if (debug) {
+            builder.addQueryParameter("debug", "1");
+        }
+
+        HttpUrl httpUrl = builder
+                .build();
+
         Request requestWithAccessToken = request.newBuilder()
                 .header("User-Agent", WecomUserAgent.WECOM_USER_AGENT)
-                .url(oldHttpUrl.newBuilder()
-                        .addQueryParameter(tokenParam, tokenResponse)
-                        .build())
+                .url(httpUrl)
                 .build();
         return chain.proceed(requestWithAccessToken);
     }

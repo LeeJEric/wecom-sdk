@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * 附件组件
  *
  * @author dax
- * @since 2024/5/26
+ * @since 2024 /5/26
  */
 @ToString
 @Getter
@@ -51,9 +51,19 @@ public class FileValue implements ContentDataValue {
      *
      * @param mediaIds the media ids
      */
-    public FileValue(Set<String> mediaIds) {
+    FileValue(Set<String> mediaIds) {
         this(mediaIds.stream()
                 .map(FileInfo::new)
                 .collect(Collectors.toList()));
+    }
+
+    /**
+     * From file value.
+     *
+     * @param mediaIds the media ids
+     * @return the file value
+     */
+    public static FileValue from(Set<String> mediaIds) {
+        return new FileValue(mediaIds);
     }
 }

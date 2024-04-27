@@ -41,4 +41,5 @@ public class ApprovalDetail {
     private List<UserId> notifyer;
     private ApplyData<ApplyContentData<?>> applyData;
     private List<ApprovalComment> comments;
+    private ProcessList processList;
 }

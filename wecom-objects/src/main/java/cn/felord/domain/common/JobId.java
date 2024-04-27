@@ -18,10 +18,22 @@ package cn.felord.domain.common;
 import lombok.Data;
 
 /**
+ * The type Job id.
+ *
  * @author dax
- * @since 2023/6/28 16:14
+ * @since 2023 /6/28 16:14
  */
 @Data
 public class JobId {
     private final String jobid;
+
+    /**
+     * Of job id.
+     *
+     * @param jobid the jobid
+     * @return the job id
+     */
+    public static JobId of(String jobid) {
+        return new JobId(jobid);
+    }
 }

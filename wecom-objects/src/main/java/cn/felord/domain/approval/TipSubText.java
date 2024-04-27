@@ -71,6 +71,6 @@ public abstract class TipSubText<CONTENT> {
      * @return the tip sub text
      */
     public static TipSubText<LinkTipContent> link(@NonNull String title, @NonNull String url) {
-        return new LinkTipSubText(TipsCtrlType.LINK, new LinkTipContent(new LinkSubText(title, url)));
+        return new LinkTipSubText(TipsCtrlType.LINK, new LinkTipContent(title, url));
     }
 }

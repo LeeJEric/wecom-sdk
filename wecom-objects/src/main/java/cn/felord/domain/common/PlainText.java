@@ -24,7 +24,7 @@ import lombok.ToString;
  * The type Plain text.
  *
  * @author dax
- * @since 2024/1/24
+ * @since 2024 /1/24
  */
 @ToString
 @Getter
@@ -39,5 +39,15 @@ public class PlainText {
     @JsonCreator
     public PlainText(@JsonProperty("content") String content) {
         this.content = content;
+    }
+
+    /**
+     * Of plain text.
+     *
+     * @param content the content
+     * @return the plain text
+     */
+    public static PlainText of(String content) {
+        return new PlainText(content);
     }
 }

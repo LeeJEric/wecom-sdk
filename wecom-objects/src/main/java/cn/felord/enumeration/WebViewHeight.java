@@ -15,69 +15,43 @@
 
 package cn.felord.enumeration;
 
-import cn.felord.xml.convert.CallbackNumberEnum;
-import cn.felord.xml.convert.NumberEnumConverter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 import java.util.Arrays;
 
 /**
- * The NodeStatus
+ * WebView 高度
  *
- * @author felord
- * @since 2021 /11/23 17:01
+ * @author dax
+ * @since 2022 /10/25
  */
-@XStreamConverter(NumberEnumConverter.class)
-public enum NodeStatus implements CallbackNumberEnum {
+public enum WebViewHeight {
+    /**
+     * 点击推事件
+     */
+    SINGLE_ROW("single_row"),
+    /**
+     * 跳转URL
+     */
+    DOUBLE_ROW("double_row");
 
+    private final String type;
 
-    /**
-     * 审批中
-     */
-    APPROVAL(1),
-    /**
-     * 已通过
-     */
-    ACCEPTED(2),
-    /**
-     * 已驳回
-     */
-    REJECTED(3),
-    /**
-     * 已转审
-     */
-    TRANSFERRED(4),
-    /**
-     * 已退回（仅在查询详情返回）
-     */
-    RETURNED(11),
-    /**
-     * 已加签（仅在查询详情返回）
-     */
-    APPEND_ASSIGNEE(12),
-    /**
-     * 已同意并加签（仅在查询详情返回）
-     */
-    APPEND_AND_AGREE(13);
-
-    private final int type;
-
-    NodeStatus(int type) {
+    WebViewHeight(String type) {
         this.type = type;
     }
 
     /**
-     * Deserialize NodeStatus.
+     * Deserialize WebViewHeight
      *
      * @param type the type
-     * @return the button type
+     * @return the add ways
      */
     @JsonCreator
-    public static NodeStatus deserialize(int type) {
-        return Arrays.stream(NodeStatus.values())
-                .filter(answerStatus -> answerStatus.type == type)
+    public static WebViewHeight deserialize(String type) {
+        return Arrays.stream(WebViewHeight.values())
+                .filter(webViewHeight -> webViewHeight.type.equals(type))
                 .findFirst()
                 .orElse(null);
     }
@@ -88,7 +62,7 @@ public enum NodeStatus implements CallbackNumberEnum {
      * @return the type
      */
     @JsonValue
-    public int getType() {
+    public String getType() {
         return type;
     }
 }

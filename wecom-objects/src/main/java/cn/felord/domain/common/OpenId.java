@@ -18,36 +18,37 @@ package cn.felord.domain.common;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.ToString;
 
 /**
- * The type Group id.
+ * The type Open id.
  *
  * @author dax
- * @since 2024 /10/5
+ * @since 2023 /5/24 15:55
  */
 @ToString
 @Getter
-public class GroupId {
-    private final String groupId;
+public class OpenId {
+    private final String openid;
 
     /**
-     * Instantiates a new Group id.
+     * Instantiates a new Open id.
      *
-     * @param groupId the group id
+     * @param openid the openid
      */
     @JsonCreator
-    public GroupId(@JsonProperty("group_id") String groupId) {
-        this.groupId = groupId;
+    public OpenId(@JsonProperty("openid") String openid) {
+        this.openid = openid;
     }
 
     /**
-     * Of group id.
+     * Of openid.
      *
-     * @param groupId the group id
-     * @return the group id
+     * @param openid the openid
+     * @return the open id
      */
-    public static GroupId of(String groupId) {
-        return new GroupId(groupId);
+    public static OpenId of(@NonNull String openid) {
+        return new OpenId(openid);
     }
 }

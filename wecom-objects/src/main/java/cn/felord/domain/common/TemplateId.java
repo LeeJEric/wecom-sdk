@@ -22,20 +22,44 @@ import lombok.NonNull;
 import lombok.ToString;
 
 /**
+ * The type Template id.
+ *
  * @author dax
- * @since 2023/5/24 15:43
+ * @since 2023 /5/24 15:43
  */
 @ToString
 @Getter
 public class TemplateId {
     private final String templateId;
 
+    /**
+     * Instantiates a new Template id.
+     *
+     * @param templateId the template id
+     */
     @JsonCreator
     public TemplateId(@JsonProperty("template_id") String templateId) {
         this.templateId = templateId;
     }
 
+    /**
+     * From template id.
+     *
+     * @param templateId the template id
+     * @return the template id
+     */
+    @Deprecated
     public static TemplateId from(@NonNull String templateId) {
+        return new TemplateId(templateId);
+    }
+
+    /**
+     * Of template id.
+     *
+     * @param templateId the template id
+     * @return the template id
+     */
+    public static TemplateId of(@NonNull String templateId) {
         return new TemplateId(templateId);
     }
 }

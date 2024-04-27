@@ -16,11 +16,13 @@
 package cn.felord.domain.message;
 
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * @author felord
  * @since 2021/11/22 17:14
  */
+@ToString
 @Getter
 public class MessageTextCard {
     private final String title;
