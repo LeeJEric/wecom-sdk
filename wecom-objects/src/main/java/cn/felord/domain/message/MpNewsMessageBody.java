@@ -36,7 +36,7 @@ public class MpNewsMessageBody extends AbstractMessageBody {
         this.enableIdTrans = enableIdTrans;
     }
 
-    public static class Builder {
+    public static class Builder implements MessageBodyBuilder {
         private final MessageNews<MpNewsArticle> mpnews;
         private String touser;
         private String toparty;
@@ -50,19 +50,37 @@ public class MpNewsMessageBody extends AbstractMessageBody {
             this.mpnews = mpnews;
         }
 
+        @Override
         public Builder touser(String touser) {
             this.touser = touser;
             return this;
         }
 
+        @Override
+        public String touser() {
+            return this.touser;
+        }
+
+        @Override
         public Builder toparty(String toparty) {
             this.toparty = toparty;
             return this;
         }
 
+        @Override
+        public String toparty() {
+            return this.toparty;
+        }
+
+        @Override
         public Builder totag(String totag) {
             this.totag = totag;
             return this;
+        }
+
+        @Override
+        public String totag() {
+            return this.totag;
         }
 
         public Builder enableIdTrans(BoolEnum enableIdTrans) {
@@ -85,6 +103,7 @@ public class MpNewsMessageBody extends AbstractMessageBody {
             return this;
         }
 
+        @Override
         public MpNewsMessageBody build() {
             return new MpNewsMessageBody(touser, toparty, totag, enableIdTrans, safe, enableDuplicateCheck, duplicateCheckInterval, mpnews);
         }

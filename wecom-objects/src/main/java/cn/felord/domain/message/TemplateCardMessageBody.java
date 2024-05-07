@@ -56,7 +56,7 @@ public class TemplateCardMessageBody<M extends AbstractCard> extends AbstractMes
      *
      * @param <M> the type parameter
      */
-    public static class Builder<M extends AbstractCard> {
+    public static class Builder<M extends AbstractCard> implements MessageBodyBuilder {
         private final M templateCard;
         private String touser;
         private String toparty;
@@ -74,37 +74,38 @@ public class TemplateCardMessageBody<M extends AbstractCard> extends AbstractMes
             this.templateCard = templateCard;
         }
 
-        /**
-         * Touser builder.
-         *
-         * @param touser the touser
-         * @return the builder
-         */
+
+        @Override
         public Builder<M> touser(String touser) {
             this.touser = touser;
             return this;
         }
 
-        /**
-         * Toparty builder.
-         *
-         * @param toparty the toparty
-         * @return the builder
-         */
+        @Override
+        public String touser() {
+            return this.touser;
+        }
+
+        @Override
         public Builder<M> toparty(String toparty) {
             this.toparty = toparty;
             return this;
         }
 
-        /**
-         * Totag builder.
-         *
-         * @param totag the totag
-         * @return the builder
-         */
+        @Override
+        public String toparty() {
+            return this.toparty;
+        }
+
+        @Override
         public Builder<M> totag(String totag) {
             this.totag = totag;
             return this;
+        }
+
+        @Override
+        public String totag() {
+            return this.totag;
         }
 
         /**

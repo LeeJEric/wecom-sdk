@@ -36,7 +36,7 @@ public class NewsMessageBody extends AbstractMessageBody {
         this.enableIdTrans = enableIdTrans;
     }
 
-    public static class Builder {
+    public static class Builder implements MessageBodyBuilder {
         private final MessageNews<NewsArticle> news;
         private String touser;
         private String toparty;
@@ -49,19 +49,38 @@ public class NewsMessageBody extends AbstractMessageBody {
             this.news = news;
         }
 
+
+        @Override
         public Builder touser(String touser) {
             this.touser = touser;
             return this;
         }
 
+        @Override
+        public String touser() {
+            return this.touser;
+        }
+
+        @Override
         public Builder toparty(String toparty) {
             this.toparty = toparty;
             return this;
         }
 
+        @Override
+        public String toparty() {
+            return this.toparty;
+        }
+
+        @Override
         public Builder totag(String totag) {
             this.totag = totag;
             return this;
+        }
+
+        @Override
+        public String totag() {
+            return this.totag;
         }
 
         public Builder enableIdTrans(BoolEnum enableIdTrans) {
@@ -80,6 +99,7 @@ public class NewsMessageBody extends AbstractMessageBody {
             return this;
         }
 
+        @Override
         public NewsMessageBody build() {
             return new NewsMessageBody(touser, toparty, totag, enableIdTrans, enableDuplicateCheck, duplicateCheckInterval, news);
         }
