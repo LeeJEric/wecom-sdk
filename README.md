@@ -156,7 +156,7 @@ void webHooks()throws IOException{
 
 ## 📚文档
 
-中文文档：[https://felord.cn/wecom/overview.html](https://felord.cn/wecom/overview.html)
+不再提供任何文档，代码即文档
 
 ## 🎉特别鸣谢
 
