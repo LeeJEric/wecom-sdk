@@ -29,7 +29,7 @@ import java.util.List;
  * 假勤组件-请假组件
  *
  * @author dax
- * @since 2024/5/27
+ * @since 2024 /5/27
  */
 @ToString
 @Getter
@@ -52,12 +52,13 @@ public class VacationValue implements ContentDataValue {
      * @param key            {@code ApprovalTmpDetailResponse#getVacationList()}
      * @param attendanceType the attendance type
      * @param dateRange      the date range
+     * @param sliceInfo      the slice info
      * @return the vacation value
      */
-    public static VacationValue from(String key, AttendanceType attendanceType, DateRangeWrapper dateRange) {
+    public static VacationValue from(String key, AttendanceType attendanceType, DateRangeWrapper dateRange, SliceInfo sliceInfo) {
         CtrlOption options = new CtrlOption();
         options.setKey(key);
-        return new VacationValue(new Wrapper(options, attendanceType, dateRange));
+        return new VacationValue(new Wrapper(options, attendanceType, dateRange, sliceInfo));
     }
 
     /**
@@ -68,7 +69,20 @@ public class VacationValue implements ContentDataValue {
      * @return the vacation value
      */
     public static VacationValue leave(String key, DateRangeWrapper dateRange) {
-        return from(key, AttendanceType.LEAVE, dateRange);
+        return from(key, AttendanceType.LEAVE, dateRange, null);
+    }
+
+    /**
+     * 请假
+     *
+     * @param key       the key
+     * @param dateRange the date range
+     * @param sliceInfo the slice info
+     * @return the vacation value
+     * @since 1.2.8
+     */
+    public static VacationValue leave(String key, DateRangeWrapper dateRange, SliceInfo sliceInfo) {
+        return from(key, AttendanceType.LEAVE, dateRange, sliceInfo);
     }
 
     /**
@@ -79,7 +93,20 @@ public class VacationValue implements ContentDataValue {
      * @return the vacation value
      */
     public static VacationValue trip(String key, DateRangeWrapper dateRange) {
-        return from(key, AttendanceType.BUSINESS_TRIP, dateRange);
+        return trip(key, dateRange, null);
+    }
+
+    /**
+     * 出差
+     *
+     * @param key       the key
+     * @param dateRange the date range
+     * @param sliceInfo the slice info
+     * @return the vacation value
+     * @since 1.2.8
+     */
+    public static VacationValue trip(String key, DateRangeWrapper dateRange, SliceInfo sliceInfo) {
+        return from(key, AttendanceType.BUSINESS_TRIP, dateRange, sliceInfo);
     }
 
     /**
@@ -90,7 +117,20 @@ public class VacationValue implements ContentDataValue {
      * @return the vacation value
      */
     public static VacationValue goingOut(String key, DateRangeWrapper dateRange) {
-        return from(key, AttendanceType.GOING_OUT, dateRange);
+        return goingOut(key, dateRange, null);
+    }
+
+    /**
+     * 外出
+     *
+     * @param key       the key
+     * @param dateRange the date range
+     * @param sliceInfo the slice info
+     * @return the vacation value
+     * @since 1.2.8
+     */
+    public static VacationValue goingOut(String key, DateRangeWrapper dateRange, SliceInfo sliceInfo) {
+        return from(key, AttendanceType.GOING_OUT, dateRange, sliceInfo);
     }
 
     /**
@@ -101,7 +141,20 @@ public class VacationValue implements ContentDataValue {
      * @return the vacation value
      */
     public static VacationValue overtime(String key, DateRangeWrapper dateRange) {
-        return from(key, AttendanceType.OVERTIME_WORK, dateRange);
+        return overtime(key, dateRange, null);
+    }
+
+    /**
+     * 加班
+     *
+     * @param key       the key
+     * @param dateRange the date range
+     * @param sliceInfo the slice info
+     * @return the vacation value
+     * @since 1.2.8
+     */
+    public static VacationValue overtime(String key, DateRangeWrapper dateRange, SliceInfo sliceInfo) {
+        return from(key, AttendanceType.OVERTIME_WORK, dateRange, sliceInfo);
     }
 
     /**
@@ -131,9 +184,10 @@ public class VacationValue implements ContentDataValue {
          * @param options   the options
          * @param type      the type
          * @param dateRange the date range
+         * @param sliceInfo the slice info
          */
-        Wrapper(CtrlOption options, AttendanceType type, DateRangeWrapper dateRange) {
-            this(new Selector(Collections.singletonList(options)), new Attendance(type, dateRange, null));
+        Wrapper(CtrlOption options, AttendanceType type, DateRangeWrapper dateRange, SliceInfo sliceInfo) {
+            this(new Selector(Collections.singletonList(options)), new Attendance(type, dateRange, sliceInfo));
         }
     }
 

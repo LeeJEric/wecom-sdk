@@ -35,6 +35,12 @@ public class DeviceResult {
      */
     private String deviceCode;
     /**
+     * 当重复导入(status=2)时，与当前导入记录冲突的设备的device_code
+     *
+     * @since 1.2.8
+     */
+    private String duplicatedDeviceCode;
+    /**
      * 导入结果
      */
     private DeviceImportStatus status;

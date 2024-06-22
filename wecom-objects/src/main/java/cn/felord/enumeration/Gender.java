@@ -21,45 +21,25 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 
 /**
- * The DocType
+ * The Gender
  *
  * @author dax
- * @since 2021/9/8 10:47
+ * @since 2024/10/6
  */
-public enum DocType {
+public enum Gender {
     /**
-     * 文档
+     * 男
      */
-    DOC(3),
+    MALE(1),
     /**
-     * 表格
+     * 女
      */
-    SHEET(4),
-    /**
-     * 智能表格
-     *
-     * @since 1.2.8
-     */
-    SMART_SHEET(10);
+    FEMALE(2);
 
     private final int type;
 
-    DocType(int type) {
+    Gender(int type) {
         this.type = type;
-    }
-
-    /**
-     * Deserialize DocType.
-     *
-     * @param type the type
-     * @return the moment task type
-     */
-    @JsonCreator
-    public static DocType deserialize(int type) {
-        return Arrays.stream(DocType.values())
-                .filter(billType -> billType.type == type)
-                .findFirst()
-                .orElse(null);
     }
 
     /**
@@ -70,5 +50,19 @@ public enum DocType {
     @JsonValue
     public int getType() {
         return type;
+    }
+
+    /**
+     * Deserialize Gender
+     *
+     * @param type the type
+     * @return the Gender
+     */
+    @JsonCreator
+    public static Gender deserialize(int type) {
+        return Arrays.stream(Gender.values())
+                .filter(callType -> callType.type == type)
+                .findFirst()
+                .orElse(null);
     }
 }

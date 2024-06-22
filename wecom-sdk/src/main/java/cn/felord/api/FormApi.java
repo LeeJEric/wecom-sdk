@@ -27,14 +27,14 @@ import retrofit2.http.POST;
  * 收集表
  *
  * @author dax
- * @since 2024/3/13 16:27
+ * @since 2024 /3/13 16:27
  */
 public interface FormApi {
 
 
     /**
      * 创建收集表
-     *
+     * <p>
      * 已过时，不带校验
      *
      * @param request the request

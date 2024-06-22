@@ -16,18 +16,47 @@
 package cn.felord.domain.approval;
 
 import cn.felord.enumeration.SliceState;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 import java.time.Duration;
 import java.util.List;
 
 /**
+ * The type Slice info.
+ *
  * @author dax
- * @since 2023/12/19
+ * @since 2023 /12/19
  */
-@Data
+@Getter
 public class SliceInfo {
-    private Duration duration;
-    private SliceState state;
-    private List<DayItem> dayItems;
+    private final Duration duration;
+    private final SliceState state;
+    private final List<DayItem> dayItems;
+
+    /**
+     * Instantiates a new Slice info.
+     *
+     * @param duration the duration
+     * @param state    the state
+     * @param dayItems the day items
+     */
+    @JsonCreator
+    SliceInfo(@JsonProperty("duration") Duration duration,
+              @JsonProperty("state") SliceState state,
+              @JsonProperty("day_items") List<DayItem> dayItems) {
+        this.duration = duration;
+        this.state = state;
+        this.dayItems = dayItems;
+    }
+
+    /**
+     * Instantiates a new Slice info.
+     *
+     * @param dayItems the day items
+     */
+    public SliceInfo(List<DayItem> dayItems) {
+        this(null, null, dayItems);
+    }
 }

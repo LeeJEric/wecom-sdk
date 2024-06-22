@@ -29,18 +29,33 @@ import java.time.Instant;
  * The type Date range wrapper.
  *
  * @author dax
- * @since 2024/12/19
+ * @since 2024 /12/19
  */
 @ToString
 @Getter
 public class DateRangeWrapper {
+    /**
+     * 时间展示类型
+     */
     private final DateRangeType type;
+    /**
+     * 开始时间戳
+     */
     private final Instant newBegin;
+    /**
+     * 结束时间戳
+     */
     private final Instant newEnd;
+    /**
+     * 请假时长，单位秒 当slice_info有值时，无需填写，系统会根据slice_info 计算总时长
+     */
     @JsonFormat(shape = JsonFormat.Shape.NUMBER, pattern = "SECONDS")
     private final Duration newDuration;
     @JsonFormat(shape = JsonFormat.Shape.NUMBER, pattern = "SECONDS")
     private final Duration perdayDuration;
+    /**
+     * 时区信息，只有在非UTC+8的情况下会返回
+     */
     private final TimezoneInfo timezoneInfo;
 
     /**
