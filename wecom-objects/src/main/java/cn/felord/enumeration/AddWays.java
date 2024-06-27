@@ -24,7 +24,7 @@ import java.util.Arrays;
  * 添加客户的来源
  *
  * @author dax
- * @since 2021/9/9 9:22
+ * @since 2021 /9/9 9:22
  */
 public enum AddWays {
     /**
@@ -32,7 +32,7 @@ public enum AddWays {
      */
     UNKNOWN(0),
     /**
-     *扫描二维码
+     * 扫描二维码
      */
     QR_CODE_SCANNED(1),
     /**
@@ -103,6 +103,18 @@ public enum AddWays {
      * @since 1.2.6
      */
     REQ_REPLY(18),
+    /**
+     * 通过第三方服务售前客服添加
+     *
+     * @since 1.2.8
+     */
+    THIRD_PRE_SALES_SERVICER(21),
+    /**
+     * 通过接受微信账号收到的好友申请添加
+     *
+     * @since 1.2.8
+     */
+    WECHAT_FRIEND(24),
     /**
      * 内部成员共享
      */
