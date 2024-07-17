@@ -38,7 +38,7 @@ public class TemplateId {
      * @param templateId the template id
      */
     @JsonCreator
-    public TemplateId(@JsonProperty("template_id") String templateId) {
+    TemplateId(@JsonProperty("template_id") String templateId) {
         this.templateId = templateId;
     }
 

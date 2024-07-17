@@ -427,7 +427,7 @@ class SpringBootWecomSdkTests {
         // 模板
         String templateId = "C4UEh71DAPh775HPfXipikZ5eAGosskDibU8hkfxJ";
         // 查询模板配置  可以用缓存优化性能 避免直接查询企业微信
-        ApprovalTmpDetailResponse templateDetail = approvalApi.getTemplateDetail(new TemplateId(templateId));
+        ApprovalTmpDetailResponse templateDetail = approvalApi.getTemplateDetail(TemplateId.of(templateId));
         Assertions.assertTrue(templateDetail.isSuccessful());
         // 审批人模式：0-通过接口指定审批人、抄送人（此时approver、notifyer等参数可用）;
         // 1-使用此模板在管理后台设置的审批流程(需要保证审批流程中没有“申请人自选”节点)，支持条件审批。
