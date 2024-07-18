@@ -33,6 +33,13 @@
 
 <p align="center">📢如果你感觉这个项目不错，请点击项目右上角的⭐以鼓励作者，谢谢🎉。</p>
 
+## 须知
+
+1. 代码完全开源，使用前请认真尝试样例工程
+2. 在尝试步骤1的前提下遇到问题经过一系列努力无法解决，请提issue，或者通过自行扩展代码解决
+3. 不再提供任何无偿人工服务，不要把自己当上帝
+4. 会持续维护迭代
+
 ## 🏆简介
 
 [wecom-sdk](https://gitee.com/felord/wecom-sdk)是开源的企业微信开放 API 的 Java 实现，是目前最完整的 Java
@@ -156,7 +163,7 @@ void webHooks()throws IOException{
 
 ## 📚文档
 
-中文文档：[https://felord.cn/wecom/overview.html](https://felord.cn/wecom/overview.html)
+不再提供任何文档，代码即文档
 
 ## 🎉特别鸣谢
 
