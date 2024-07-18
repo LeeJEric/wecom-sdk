@@ -104,7 +104,7 @@ void webHooks()throws IOException{
 <dependency>
     <groupId>cn.felord</groupId>
     <artifactId>wecom-sdk</artifactId>
-    <version>1.2.7</version>
+    <version>1.2.8</version>
 </dependency>
 ```
 
@@ -115,7 +115,7 @@ void webHooks()throws IOException{
 <dependency>
     <groupId>cn.felord</groupId>
     <artifactId>rx-wecom-sdk</artifactId>
-    <version>1.2.7</version>
+    <version>1.2.8</version>
 </dependency>
 ```
 
@@ -127,7 +127,7 @@ void webHooks()throws IOException{
 <dependency>
     <groupId>cn.felord</groupId>
     <artifactId>wecom-sdk</artifactId>
-    <version>1.2.7</version>
+    <version>1.2.8</version>
     <exclusions>
         <exclusion>
             <groupId>com.squareup.okhttp3</groupId>
