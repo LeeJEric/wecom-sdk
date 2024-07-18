@@ -15,6 +15,7 @@
 
 package cn.felord.domain.contactbook.user;
 
+import cn.felord.enumeration.Gender;
 import cn.felord.enumeration.UserStatus;
 import lombok.Data;
 
@@ -32,7 +33,7 @@ public class UserDetail {
     private List<Long> department;
     private List<Integer> order;
     private String position;
-    private String gender;
+    private Gender gender;
     private String email;
     private String bizMail;
     private List<Long> isLeaderInDept;

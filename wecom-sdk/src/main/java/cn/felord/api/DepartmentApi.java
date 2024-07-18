@@ -69,6 +69,8 @@ public interface DepartmentApi {
 
     /**
      * 获取部门列表（自建）
+     * <p>
+     * 获取指定部门及其下的子部门（以及子部门的子部门等等，递归）
      *
      * @param departmentId departmentId
      * @return DeptResponse generic response

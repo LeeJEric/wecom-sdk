@@ -54,7 +54,7 @@ public class TableConfig implements ControlConfig {
      * @param sumField    the sum field
      * @return the table config
      */
-    public static TableConfig from(@NonNull List<TableCtrlProperty> children, BoolEnum printFormat, List<String> statField, List<String> sumField) {
+    public static TableConfig from(@NonNull List<TableCtrlProperty> children, BoolEnum printFormat, List<CtrlProperty> statField, List<CtrlProperty> sumField) {
         return new TableConfig(new Wrapper(children, printFormat, statField, sumField));
     }
 
@@ -66,7 +66,7 @@ public class TableConfig implements ControlConfig {
      * @param statField   the stat field
      * @return the table config
      */
-    public static TableConfig from(@NonNull List<TableCtrlProperty> children, BoolEnum printFormat, List<String> statField) {
+    public static TableConfig from(@NonNull List<TableCtrlProperty> children, BoolEnum printFormat, List<CtrlProperty> statField) {
         return from(children, printFormat, statField, null);
     }
 
@@ -99,8 +99,8 @@ public class TableConfig implements ControlConfig {
     public static class Wrapper {
         private final List<TableCtrlProperty> children;
         private final BoolEnum printFormat;
-        private final List<String> statField;
-        private final List<String> sumField;
+        private final List<CtrlProperty> statField;
+        private final List<CtrlProperty> sumField;
 
         /**
          * Instantiates a new Wrapper.
@@ -113,8 +113,8 @@ public class TableConfig implements ControlConfig {
         @JsonCreator
         Wrapper(@JsonProperty("children") List<TableCtrlProperty> children,
                 @JsonProperty("print_format") BoolEnum printFormat,
-                @JsonProperty("stat_field") List<String> statField,
-                @JsonProperty("sum_field") List<String> sumField) {
+                @JsonProperty("stat_field") List<CtrlProperty> statField,
+                @JsonProperty("sum_field") List<CtrlProperty> sumField) {
             this.printFormat = printFormat;
             this.children = children;
             this.statField = statField;

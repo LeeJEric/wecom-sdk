@@ -34,7 +34,7 @@ public class VideoMessageBody extends AbstractMessageBody {
         this.video = video;
     }
 
-    public static class Builder {
+    public static class Builder implements MessageBodyBuilder {
         private final MessageVideo video;
         private String touser;
         private String toparty;
@@ -47,21 +47,38 @@ public class VideoMessageBody extends AbstractMessageBody {
             this.video = video;
         }
 
+        @Override
         public Builder touser(String touser) {
             this.touser = touser;
             return this;
         }
 
+        @Override
+        public String touser() {
+            return this.touser;
+        }
+
+        @Override
         public Builder toparty(String toparty) {
             this.toparty = toparty;
             return this;
         }
 
+        @Override
+        public String toparty() {
+            return this.toparty;
+        }
+
+        @Override
         public Builder totag(String totag) {
             this.totag = totag;
             return this;
         }
 
+        @Override
+        public String totag() {
+            return this.totag;
+        }
         public Builder safe(MessageSafe safe) {
             this.safe = safe;
             return this;
@@ -77,6 +94,7 @@ public class VideoMessageBody extends AbstractMessageBody {
             return this;
         }
 
+        @Override
         public VideoMessageBody build() {
             return new VideoMessageBody(touser, toparty, totag, safe, enableDuplicateCheck, duplicateCheckInterval, video);
         }

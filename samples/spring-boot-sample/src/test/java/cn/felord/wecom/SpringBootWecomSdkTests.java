@@ -41,7 +41,6 @@ import cn.felord.domain.WeComResponse;
 import cn.felord.domain.approval.ApprovalApplyRequest;
 import cn.felord.domain.approval.ApprovalDetail;
 import cn.felord.domain.approval.ApprovalSpNo;
-import cn.felord.domain.approval.ApprovalTitle;
 import cn.felord.domain.approval.ApprovalTmpDetailResponse;
 import cn.felord.domain.approval.Approver;
 import cn.felord.domain.approval.ContactValue;
@@ -55,6 +54,8 @@ import cn.felord.domain.approval.LocationValue;
 import cn.felord.domain.approval.MoneyValue;
 import cn.felord.domain.approval.NumberValue;
 import cn.felord.domain.approval.PhoneNumberValue;
+import cn.felord.domain.approval.ProcessApplyRequest;
+import cn.felord.domain.approval.ProcessNode;
 import cn.felord.domain.approval.RelatedApprovalValue;
 import cn.felord.domain.approval.SelectorValue;
 import cn.felord.domain.approval.Summary;
@@ -106,6 +107,7 @@ import cn.felord.domain.wedoc.form.AnswerReplyItem;
 import cn.felord.domain.wedoc.form.FormAnswerRequest;
 import cn.felord.domain.wedrive.BufferSource;
 import cn.felord.enumeration.AnswerReplyItemType;
+import cn.felord.enumeration.ApvRel;
 import cn.felord.enumeration.BoolEnum;
 import cn.felord.enumeration.MediaTypeEnum;
 import cn.felord.enumeration.NativeAgent;
@@ -358,6 +360,56 @@ class SpringBootWecomSdkTests {
     }
 
     /**
+     * 新版审批
+     *
+     * @since 1.2.8
+     */
+    @Test
+    void newApproval() {
+        String templateId = "3WLtyn8eQcZ5BhCx7CiBg35i4n7E1eDihMAgethW";
+        AgentDetails nativeAgent = DefaultAgent.of("企业ID", "审批应用密钥", "xxxx");
+        ApprovalApi approvalApi = workWeChatApi.approvalApi(nativeAgent);
+        ApprovalTmpDetailResponse templateDetail = approvalApi.getTemplateDetail(TemplateId.of(templateId));
+        System.out.println("templateDetail = " + templateDetail);
+
+        List<Summary> summaryList = Collections.singletonList(Summary.zhCN("测试模板"));
+
+
+        List<ContentDataValue> dataValues = Arrays.asList(
+                TextValue.tip(),
+                TextValue.from("洗发水"),
+                // 明细
+                ListContentDataValue.of(Arrays.asList(
+                                MoneyValue.from(12.30),
+                                NumberValue.from(7)
+                        ))
+                        .append(Arrays.asList(
+                                MoneyValue.from(34.64),
+                                NumberValue.from(22)
+
+                        ))
+        );
+
+        List<ProcessNode> nodeList = Arrays.asList(
+                ProcessNode.cc(Collections.singletonList("3958")),
+                ProcessNode.assignees(ApvRel.ALL, Arrays.asList("4921", "2774")),
+                ProcessNode.assignees(ApvRel.OR, Arrays.asList("3958", "2824")),
+                ProcessNode.processor(Collections.singletonList("1008")),
+                ProcessNode.cc(Collections.singletonList("3804"))
+
+        );
+        GenericResponse<String> stringGenericResponse = approvalApi.applyEvent(ProcessApplyRequest.approverMode("3958",
+                templateId,
+                nodeList,
+                templateDetail.getTemplateContent().getControls(),
+                dataValues,
+                summaryList
+        ));
+        System.out.println("stringGenericResponse = " + stringGenericResponse);
+
+
+    }
+    /**
      * 企业微信发起审批
      */
     @Test
@@ -423,11 +475,11 @@ class SpringBootWecomSdkTests {
                 new Approver("123"), new Approver("123")
         );
         // 摘要
-        List<Summary> summaryList = Collections.singletonList(new Summary(Collections.singletonList(ApprovalTitle.zhCN("测试模板"))));
+        List<Summary> summaryList = Collections.singletonList(Summary.zhCN("测试模板"));
         // 模板
         String templateId = "C4UEh71DAPh775HPfXipikZ5eAGosskDibU8hkfxJ";
         // 查询模板配置  可以用缓存优化性能 避免直接查询企业微信
-        ApprovalTmpDetailResponse templateDetail = approvalApi.getTemplateDetail(new TemplateId(templateId));
+        ApprovalTmpDetailResponse templateDetail = approvalApi.getTemplateDetail(TemplateId.of(templateId));
         Assertions.assertTrue(templateDetail.isSuccessful());
         // 审批人模式：0-通过接口指定审批人、抄送人（此时approver、notifyer等参数可用）;
         // 1-使用此模板在管理后台设置的审批流程(需要保证审批流程中没有“申请人自选”节点)，支持条件审批。

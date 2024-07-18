@@ -29,6 +29,7 @@ import java.util.List;
  * @author dax
  * @since 2024 /5/25
  * @deprecated
+ * @see ProcessApplyRequest
  */
 @ToString
 @Getter

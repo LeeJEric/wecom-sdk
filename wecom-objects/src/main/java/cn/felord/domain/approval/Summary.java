@@ -15,30 +15,52 @@
 
 package cn.felord.domain.approval;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The type Summary.
  *
  * @author dax
- * @since 2024/5/26
+ * @since 2024 /5/26
  */
-@Data
+@ToString
+@Getter
 public class Summary {
     private final List<ApprovalTitle> summaryInfo;
 
 
+    @JsonCreator
+    Summary(@JsonProperty("summary_info") List<ApprovalTitle> summaryInfo) {
+        this.summaryInfo = summaryInfo;
+    }
+
     /**
-     * Zh cn summary.
+     * 单个中文
      *
      * @param text the text
      * @return the summary
      */
     public static Summary zhCN(String text) {
         return new Summary(Collections.singletonList(ApprovalTitle.zhCN(text)));
+    }
+
+    /**
+     * 多个中文
+     *
+     * @param texts the texts
+     * @return the summary
+     */
+    public static Summary zhCN(List<String> texts) {
+        return new Summary(texts.stream()
+                .map(ApprovalTitle::zhCN)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -51,4 +73,13 @@ public class Summary {
         return new Summary(Collections.singletonList(title));
     }
 
+    /**
+     * Summary summary.
+     *
+     * @param titles the titles
+     * @return the summary
+     */
+    public static Summary summary(List<ApprovalTitle> titles) {
+        return new Summary(titles);
+    }
 }

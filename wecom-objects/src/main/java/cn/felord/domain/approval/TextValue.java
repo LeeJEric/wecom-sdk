@@ -25,7 +25,7 @@ import lombok.ToString;
  * The type Text value.
  *
  * @author dax
- * @since 2024/5/26
+ * @since 2024 /5/26
  */
 @ToString
 @Getter
@@ -59,5 +59,14 @@ public class TextValue implements ContentDataValue {
      */
     public static TextValue nullValue() {
         return new TextValue("");
+    }
+
+    /**
+     * Tip text value.
+     *
+     * @return the text value
+     */
+    public static TextValue tip() {
+        return nullValue();
     }
 }

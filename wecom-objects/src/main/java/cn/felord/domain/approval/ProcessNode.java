@@ -61,7 +61,7 @@ public class ProcessNode {
     }
 
     /**
-     * Assignees process node.
+     * 审批人
      *
      * @param apvRel the apv rel
      * @param userid the userid
@@ -72,23 +72,22 @@ public class ProcessNode {
     }
 
     /**
-     * Cc process node.
+     * 抄送节点，支持前抄送后抄送
      *
-     * @param apvRel the apv rel
      * @param userid the userid
      * @return the process node
      */
-    public static ProcessNode cc(ApvRel apvRel, List<String> userid) {
-        return create(ProcessNodeType.CC, apvRel, userid);
+    public static ProcessNode cc(List<String> userid) {
+        return create(ProcessNodeType.CC, ApvRel.ALL, userid);
     }
 
     /**
-     * Processor process node.
+     * 办理人节点
      *
      * @param userid the userid
      * @return the process node
      */
     public static ProcessNode processor(List<String> userid) {
-        return create(ProcessNodeType.PROCESSOR, null, userid);
+        return create(ProcessNodeType.PROCESSOR, ApvRel.ALL, userid);
     }
 }

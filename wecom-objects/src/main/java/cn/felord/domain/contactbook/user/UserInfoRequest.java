@@ -15,6 +15,7 @@
 
 package cn.felord.domain.contactbook.user;
 
+import cn.felord.enumeration.Gender;
 import lombok.Data;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class UserInfoRequest {
     private List<Long> department;
     private List<Integer> order;
     private String position;
-    private Integer gender;
+    private Gender gender;
     private String email;
     private String bizMail;
     private String telephone;

@@ -38,7 +38,7 @@ public class TextCardMessageBody extends AbstractMessageBody {
     }
 
 
-    public static class Builder {
+    public static class Builder implements MessageBodyBuilder {
         private final MessageTextCard textcard;
         private String touser;
         private String toparty;
@@ -51,19 +51,37 @@ public class TextCardMessageBody extends AbstractMessageBody {
             this.textcard = textcard;
         }
 
+        @Override
         public Builder touser(String touser) {
             this.touser = touser;
             return this;
         }
 
+        @Override
+        public String touser() {
+            return this.touser;
+        }
+
+        @Override
         public Builder toparty(String toparty) {
             this.toparty = toparty;
             return this;
         }
 
+        @Override
+        public String toparty() {
+            return this.toparty;
+        }
+
+        @Override
         public Builder totag(String totag) {
             this.totag = totag;
             return this;
+        }
+
+        @Override
+        public String totag() {
+            return this.totag;
         }
 
         public Builder enableIdTrans(BoolEnum enableIdTrans) {
@@ -81,6 +99,7 @@ public class TextCardMessageBody extends AbstractMessageBody {
             return this;
         }
 
+        @Override
         public TextCardMessageBody build() {
             return new TextCardMessageBody(touser, toparty, totag, enableIdTrans, enableDuplicateCheck, duplicateCheckInterval, textcard);
         }

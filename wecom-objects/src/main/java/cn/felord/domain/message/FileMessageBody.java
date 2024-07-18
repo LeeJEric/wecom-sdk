@@ -35,7 +35,7 @@ public class FileMessageBody extends AbstractMessageBody {
         this.file = file;
     }
 
-    public static class Builder {
+    public static class Builder implements MessageBodyBuilder {
         private final MediaId file;
         private String touser;
         private String toparty;
@@ -49,19 +49,37 @@ public class FileMessageBody extends AbstractMessageBody {
             this.file = file;
         }
 
+        @Override
         public Builder touser(String touser) {
             this.touser = touser;
             return this;
         }
 
+        @Override
+        public String touser() {
+            return this.touser;
+        }
+
+        @Override
         public Builder toparty(String toparty) {
             this.toparty = toparty;
             return this;
         }
 
+        @Override
+        public String toparty() {
+            return this.toparty;
+        }
+
+        @Override
         public Builder totag(String totag) {
             this.totag = totag;
             return this;
+        }
+
+        @Override
+        public String totag() {
+            return this.totag;
         }
 
         public Builder safe(MessageSafe safe) {
@@ -79,6 +97,7 @@ public class FileMessageBody extends AbstractMessageBody {
             return this;
         }
 
+        @Override
         public FileMessageBody build() {
             return new FileMessageBody(touser, toparty, totag, safe, enableDuplicateCheck, duplicateCheckInterval, file);
         }
