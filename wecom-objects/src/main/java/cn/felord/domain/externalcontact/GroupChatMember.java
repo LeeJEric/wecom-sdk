@@ -69,4 +69,9 @@ public class GroupChatMember {
      * 如果是企业微信联系人，则返回其设置对外展示的别名或实名
      */
     private String name;
+    /**
+     * 企业自定义的state参数，用于区分不同的入群渠道。不超过30个UTF-8字符
+     * 如果有设置此参数，在调用获取客户群详情接口时会返回每个群成员对应的该参数值
+     */
+    private String state;
 }
