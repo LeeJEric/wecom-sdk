@@ -26,7 +26,7 @@ import java.time.Instant;
  * 位置组件
  *
  * @author dax
- * @since 2024/5/27
+ * @since 2024 /5/27
  */
 @ToString
 @Getter
@@ -52,6 +52,7 @@ public class LocationValue implements ContentDataValue {
      * @param title     the title
      * @param address   the address
      * @param time      the time
+     * @return the location value
      */
     public static LocationValue from(String latitude,
                                      String longitude,

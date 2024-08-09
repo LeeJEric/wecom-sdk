@@ -26,7 +26,7 @@ import java.util.List;
  * The type Tips config.
  *
  * @author dax
- * @since 2024/1/24
+ * @since 2024 /1/24
  */
 @ToString
 @Getter
@@ -47,6 +47,7 @@ public class TipsConfig implements ControlConfig {
      * Instantiates a new Tips config.
      *
      * @param tipsContent the tips content
+     * @return the tips config
      * @see TipsContent#zhCN(List)
      * @see TipsContent#from(String, List)
      */

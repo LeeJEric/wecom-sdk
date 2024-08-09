@@ -15,7 +15,6 @@
 
 package cn.felord.domain.callcenter;
 
-import cn.felord.domain.externalcontact.VideoMsgAttachment;
 import cn.felord.enumeration.KfMsgOrigin;
 import cn.felord.enumeration.KfMsgType;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -47,7 +46,6 @@ import java.time.Instant;
         @JsonSubTypes.Type(value = LinkKfMessage.class, name = "link"),
         @JsonSubTypes.Type(value = BusinessCardKfMessage.class, name = "business_card"),
         @JsonSubTypes.Type(value = MiniprogramKfMessage.class, name = "miniprogram"),
-        @JsonSubTypes.Type(value = VideoMsgAttachment.class, name = "video"),
         @JsonSubTypes.Type(value = MenuKfMessage.class, name = "msgmenu"),
         @JsonSubTypes.Type(value = ChannelsShopProductKfMessage.class, name = "channels_shop_product"),
         @JsonSubTypes.Type(value = ChannelsShopOrderKfMessage.class, name = "channels_shop_order"),
