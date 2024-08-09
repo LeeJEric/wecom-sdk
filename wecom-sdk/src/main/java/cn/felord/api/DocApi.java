@@ -27,7 +27,7 @@ import retrofit2.http.POST;
  * 文档-管理文档
  *
  * @author dax
- * @since 2024/7/19
+ * @since 2024 /7/19
  */
 public interface DocApi {
 
@@ -38,6 +38,7 @@ public interface DocApi {
      *
      * @param request the request
      * @return the create doc response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/create_doc")
     CreateDocResponse createDoc(@Body CreateDocRequest request) throws WeComException;
@@ -45,26 +46,19 @@ public interface DocApi {
     /**
      * 重命名文档
      *
-     * @param docId the doc id
+     * @param request the request
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/rename_doc")
-    WeComResponse renameDoc(@Body DocId docId) throws WeComException;
-
-    /**
-     * 重命名收集表
-     *
-     * @param docId the doc id
-     * @return the we com response
-     */
-    @POST("wedoc/rename_doc")
-    WeComResponse renameDoc(@Body FormId docId) throws WeComException;
+    WeComResponse renameDoc(@Body RenameDocRequest request) throws WeComException;
 
     /**
      * 删除文档
      *
      * @param docId the doc id
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/del_doc")
     WeComResponse delDoc(@Body DocId docId) throws WeComException;
@@ -74,6 +68,7 @@ public interface DocApi {
      *
      * @param formId the form id
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/del_doc")
     WeComResponse delDoc(@Body FormId formId) throws WeComException;
@@ -88,6 +83,7 @@ public interface DocApi {
      *
      * @param docId the doc id
      * @return the doc base info
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/get_doc_base_info")
     GenericResponse<DocBaseInfo> getDocBaseInfo(@Body DocId docId) throws WeComException;
@@ -97,15 +93,34 @@ public interface DocApi {
      *
      * @param docId the doc id
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/doc_share")
     GenericResponse<String> docShare(@Body DocId docId) throws WeComException;
+
+    /**
+     * 编辑文档内容
+     * <p>
+     * 该接口可以对一个在线文档批量执行多个更新操作。
+     *
+     * <ul>
+     *     <li>批量更新请求，若其中有一个操作报错则全部更新操作不生效。</li>
+     *     <li>单次批量更新操作数量不大于30。</li>
+     * </ul>
+     *
+     * @param request the request
+     * @return the we com response
+     * @throws WeComException the we com exception
+     */
+    @POST("wedoc/document/batch_update")
+    WeComResponse batchUpdateDocument(@Body DocBatchUpdateRequest request) throws WeComException;
 
     /**
      * 分享收集表
      *
      * @param formId the form id
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/doc_share")
     GenericResponse<String> docShare(@Body FormId formId) throws WeComException;
@@ -115,6 +130,7 @@ public interface DocApi {
      *
      * @param docId the doc id
      * @return the doc auth response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/doc_get_auth")
     DocAuthResponse docGetAuth(@Body DocId docId) throws WeComException;
@@ -124,6 +140,7 @@ public interface DocApi {
      *
      * @param request the request
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/mod_doc_join_rule")
     WeComResponse modDocJoinRule(@Body AccessRuleUpdateRequest request) throws WeComException;
@@ -133,6 +150,7 @@ public interface DocApi {
      *
      * @param request the request
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/mod_doc_member")
     WeComResponse modDocMember(@Body FileMemberUpdateRequest request) throws WeComException;
@@ -142,6 +160,7 @@ public interface DocApi {
      *
      * @param setting the setting
      * @return the we com response
+     * @throws WeComException the we com exception
      */
     @POST("wedoc/mod_doc_safty_setting")
     WeComResponse modDocSaftySetting(@Body DocSecuritySetting setting) throws WeComException;

@@ -19,11 +19,16 @@ package cn.felord.api;
  * 微盘API
  *
  * @author dax
- * @since 2023/3/17 15:01
+ * @since 2023 /3/17 15:01
  */
 public class WeDriveApi {
     private final WorkWeChatApiClient workWeChatApiClient;
 
+    /**
+     * Instantiates a new We drive api.
+     *
+     * @param workWeChatApiClient the work we chat api client
+     */
     WeDriveApi(WorkWeChatApiClient workWeChatApiClient) {
         this.workWeChatApiClient = workWeChatApiClient;
     }
