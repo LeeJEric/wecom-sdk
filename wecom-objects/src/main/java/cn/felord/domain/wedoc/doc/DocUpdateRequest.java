@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @ToString
 @Getter
-public class UpdateRequest {
+public class DocUpdateRequest {
     /**
      * 替换指定位置文本内容
      */
@@ -47,7 +47,7 @@ public class UpdateRequest {
      */
     private DocUpdateTextProperty updateTextProperty;
 
-    private UpdateRequest() {
+    private DocUpdateRequest() {
     }
 
     /**
@@ -57,8 +57,8 @@ public class UpdateRequest {
      * @param ranges the ranges
      * @return the update request
      */
-    public static UpdateRequest replaceText(String text, Set<DocRange> ranges) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest replaceText(String text, Set<DocRange> ranges) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.replaceText = new DocReplaceText(text, ranges);
         return updateRequest;
     }
@@ -70,8 +70,8 @@ public class UpdateRequest {
      * @param index the index
      * @return the update request
      */
-    public static UpdateRequest insertText(String text, int index) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest insertText(String text, int index) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.insertText = new DocInsertText(text, index);
         return updateRequest;
     }
@@ -83,8 +83,8 @@ public class UpdateRequest {
      * @param length     the length
      * @return the update request
      */
-    public static UpdateRequest deleteContent(int startIndex, int length) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest deleteContent(int startIndex, int length) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.deleteContent = new DocDeleteContent(startIndex, length);
         return updateRequest;
     }
@@ -98,8 +98,8 @@ public class UpdateRequest {
      * @param height  the height
      * @return the update request
      */
-    public static UpdateRequest insertImage(String imageId, int index, int width, int height) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest insertImage(String imageId, int index, int width, int height) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.insertImage = new DocInsertImage(imageId, index, width, height);
         return updateRequest;
     }
@@ -111,8 +111,8 @@ public class UpdateRequest {
      * @param index   the index
      * @return the update request
      */
-    public static UpdateRequest insertImage(String imageId, int index) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest insertImage(String imageId, int index) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.insertImage = new DocInsertImage(imageId, index);
         return updateRequest;
     }
@@ -123,8 +123,8 @@ public class UpdateRequest {
      * @param insertImage the insert image
      * @return the update request
      */
-    public static UpdateRequest insertImage(DocInsertImage insertImage) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest insertImage(DocInsertImage insertImage) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.insertImage = insertImage;
         return updateRequest;
     }
@@ -135,8 +135,8 @@ public class UpdateRequest {
      * @param index the index
      * @return the update request
      */
-    public static UpdateRequest insertPageBreak(int index) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest insertPageBreak(int index) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.insertPageBreak = new DocInsertLocation(index);
         return updateRequest;
     }
@@ -149,8 +149,8 @@ public class UpdateRequest {
      * @param cols  the cols
      * @return the update request
      */
-    public static UpdateRequest insertTable(int index, int rows, int cols) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest insertTable(int index, int rows, int cols) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.insertTable = new DocInsertTable(index, rows, cols);
         return updateRequest;
     }
@@ -161,8 +161,8 @@ public class UpdateRequest {
      * @param index the index
      * @return the update request
      */
-    public static UpdateRequest insertParagraph(int index) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest insertParagraph(int index) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.insertParagraph = new DocInsertLocation(index);
         return updateRequest;
     }
@@ -176,8 +176,8 @@ public class UpdateRequest {
      * @param ranges          the ranges
      * @return the update request
      */
-    public static UpdateRequest updateTextProperty(boolean bold, String color, String backgroundColor, Set<DocRange> ranges) {
-        UpdateRequest updateRequest = new UpdateRequest();
+    public static DocUpdateRequest updateTextProperty(boolean bold, String color, String backgroundColor, Set<DocRange> ranges) {
+        DocUpdateRequest updateRequest = new DocUpdateRequest();
         updateRequest.updateTextProperty = new DocUpdateTextProperty(bold, color, backgroundColor, ranges);
         return updateRequest;
     }

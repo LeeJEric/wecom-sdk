@@ -22,15 +22,32 @@ import lombok.Data;
 import java.util.List;
 
 /**
+ * 新建文档
+ *
  * @author felord
  * @since 2021/10/12 16:53
  */
 @Data
 public class CreateDocRequest {
 
+    /**
+     * 文档名字，文件名最多填255个字符，超过255个字符会被截断
+     */
     private final String docName;
+    /**
+     * 文档类型
+     */
     private final DocType docType;
+    /**
+     * 文档管理员userid
+     */
     private List<String> adminUsers;
+    /**
+     * 父目录fileid, 在根目录时为空间spaceid
+     */
     private String fatherid;
+    /**
+     * 空间spaceid。若指定spaceid，则fatherid也要同时指定
+     */
     private String spaceid;
 }

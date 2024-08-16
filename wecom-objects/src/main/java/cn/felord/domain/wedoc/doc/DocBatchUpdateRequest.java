@@ -16,7 +16,7 @@ import java.util.Set;
 public class DocBatchUpdateRequest {
     private final String docid;
     private final Integer verison;
-    private final Set<UpdateRequest> requests;
+    private final Set<DocUpdateRequest> requests;
 
     /**
      * Instantiates a new Doc batch update request.
@@ -25,7 +25,7 @@ public class DocBatchUpdateRequest {
      * @param docid    the docid
      * @param version  the version
      */
-    public DocBatchUpdateRequest(Set<UpdateRequest> requests, String docid, int version) {
+    public DocBatchUpdateRequest(Set<DocUpdateRequest> requests, String docid, int version) {
         this.docid = docid;
         this.verison = version;
         this.requests = requests;
@@ -37,7 +37,7 @@ public class DocBatchUpdateRequest {
      * @param requests the requests
      * @param docid    the docid
      */
-    public DocBatchUpdateRequest(Set<UpdateRequest> requests, String docid) {
+    public DocBatchUpdateRequest(Set<DocUpdateRequest> requests, String docid) {
         this.requests = requests;
         this.docid = docid;
         this.verison = null;

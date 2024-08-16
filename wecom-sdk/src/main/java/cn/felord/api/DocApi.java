@@ -19,7 +19,18 @@ import cn.felord.WeComException;
 import cn.felord.domain.GenericResponse;
 import cn.felord.domain.WeComResponse;
 import cn.felord.domain.common.FormId;
-import cn.felord.domain.wedoc.doc.*;
+import cn.felord.domain.wedoc.doc.AccessRuleUpdateRequest;
+import cn.felord.domain.wedoc.doc.CreateDocRequest;
+import cn.felord.domain.wedoc.doc.CreateDocResponse;
+import cn.felord.domain.wedoc.doc.DocAuthResponse;
+import cn.felord.domain.wedoc.doc.DocBaseInfo;
+import cn.felord.domain.wedoc.doc.DocBatchUpdateRequest;
+import cn.felord.domain.wedoc.doc.DocId;
+import cn.felord.domain.wedoc.doc.DocSecuritySetting;
+import cn.felord.domain.wedoc.doc.FileMemberUpdateRequest;
+import cn.felord.domain.wedoc.doc.RenameDocRequest;
+import cn.felord.domain.wedoc.doc.SheetBatchUpdateRequest;
+import cn.felord.domain.wedoc.doc.SheetBatchUpdateResponse;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
@@ -114,6 +125,23 @@ public interface DocApi {
      */
     @POST("wedoc/document/batch_update")
     WeComResponse batchUpdateDocument(@Body DocBatchUpdateRequest request) throws WeComException;
+
+    /**
+     * 编辑表格内容
+     * <p>
+     * 该接口可以对一个在线表格批量执行多个更新操作，注意：
+     * <ul>
+     *     <li>批量更新请求中的各个操作会逐个按顺序执行，直到全部执行完成则请求返回，或者其中一个操作报错则不再继续执行后续的操作。</li>
+     *     <li>每一个更新操作在执行之前都会做请求校验（包括权限校验、参数校验等等），如果校验未通过则该更新操作会报错并返回，不再执行后续操作。</li>
+     *     <li>单次批量更新请求的操作数量 不大于 5。</li>
+     * </ul>
+     *
+     * @param request the request
+     * @return the generic response
+     * @throws WeComException the we com exception
+     */
+    @POST("wedoc/spreadsheet/batch_update")
+    GenericResponse<SheetBatchUpdateResponse> batchUpdateSheet(@Body SheetBatchUpdateRequest request) throws WeComException;
 
     /**
      * 分享收集表
