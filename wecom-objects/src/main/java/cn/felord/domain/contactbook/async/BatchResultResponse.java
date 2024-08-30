@@ -30,7 +30,7 @@ import java.util.List;
 public class BatchResultResponse extends WeComResponse {
     private Integer status;
     private String type;
-    private Integer total;
+    private Long total;
     private Integer percentage;
     private List<Result> result;
 }
