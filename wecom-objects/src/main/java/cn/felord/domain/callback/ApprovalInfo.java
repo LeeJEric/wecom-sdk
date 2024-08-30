@@ -142,6 +142,6 @@ public class ApprovalInfo {
     /**
      * 自建应用审批当前审批节点，从0开始
      */
-    @XStreamAlias("ApproverStep")
-    private Integer ApproverStep;
+    @XStreamAlias("Approverstep")
+    private Integer approverStep;
 }

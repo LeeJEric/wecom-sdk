@@ -38,6 +38,7 @@ import java.util.Objects;
  */
 public class JsSdkApi {
     private static final String SIGNATURE_FORMATTER = "jsapi_ticket={0}&noncestr={1}&timestamp={2}&url={3}";
+    private static final String LAUNCH_CODE_PREFIX = "wxwork://launch?launch_code=";
     private static final AlternativeJdkIdGenerator ID_GENERATOR = new AlternativeJdkIdGenerator();
     private final AgentDetails agentDetails;
     private final JsApi jsApi;
@@ -123,7 +124,7 @@ public class JsSdkApi {
     public String getLaunchCode(String operatorUserid, String singleChatUserId) throws WeComException {
         String launchCode = jsApi.getLaunchCode(new LaunchCodeRequest(operatorUserid, singleChatUserId))
                 .getLaunchCode();
-        return "wxwork://launch?launch_code=" + launchCode;
+        return LAUNCH_CODE_PREFIX + launchCode;
     }
 
     private JSignatureResponse sha1(String ticket, String url) {

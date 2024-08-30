@@ -37,14 +37,14 @@ public class OpenApprovalData {
     private String applyUsername;
     @JsonProperty("ApprovalNodes")
     private ApprovalNodes approvalNodes;
-    @JsonProperty("ApproverStep")
-    private Long approverStep;
+    @JsonProperty("Approverstep")
+    private Integer approverStep;
     @JsonProperty("NotifyNodes")
     private NotifyNodes notifyNodes;
     @JsonProperty("OpenSpName")
     private String openSpName;
     @JsonProperty("OpenSpstatus")
-    private Long openSpstatus;
+    private Integer openSpstatus;
     @JsonProperty("OpenTemplateId")
     private String openTemplateId;
     @JsonProperty("ThirdNo")

@@ -52,7 +52,7 @@ import java.util.Objects;
  * 应用管理
  *
  * @author dax
- * @since 2024/6/27 11:33
+ * @since 2024 /6/27 11:33
  */
 public class AgentManagerApi {
     private final InternalAgentManagerApi internalAgentManagerApi;
@@ -80,7 +80,18 @@ public class AgentManagerApi {
      * @throws WeComException the weComException
      */
     public AgentDetailsResponse getAgentDetails() throws WeComException {
-        return internalAgentManagerApi.getAgentDetails(agentDetails.getAgentId());
+        return this.getAgentDetails(agentDetails.getAgentId());
+    }
+
+    /**
+     * 获取应用，需保证应用ID参数和Token一致
+     *
+     * @param agentId the agent id
+     * @return the agent details
+     * @throws WeComException the we com exception
+     */
+    public AgentDetailsResponse getAgentDetails(String agentId) throws WeComException {
+        return internalAgentManagerApi.getAgentDetails(agentId);
     }
 
     /**
