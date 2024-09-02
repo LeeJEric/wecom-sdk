@@ -24,20 +24,33 @@ import lombok.ToString;
  * The type Selector key.
  *
  * @author dax
- * @since 2024/9/12
+ * @since 2024 /9/12
  */
 @ToString
 @Getter
 public class SelectorKey {
     private final String key;
+    private final ApprovalTitle value;
+
 
     /**
      * Instantiates a new Selector key.
      *
      * @param key the key
      */
+    public SelectorKey(String key) {
+        this(key, null);
+    }
+
+    /**
+     * Instantiates a new Selector key.
+     *
+     * @param key   the key
+     * @param value the value
+     */
     @JsonCreator
-    public SelectorKey(@JsonProperty("key") String key) {
+    public SelectorKey(@JsonProperty("key") String key, @JsonProperty("value") ApprovalTitle value) {
         this.key = key;
+        this.value = value;
     }
 }
