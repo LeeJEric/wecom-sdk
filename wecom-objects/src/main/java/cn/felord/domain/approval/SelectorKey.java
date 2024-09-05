@@ -49,7 +49,7 @@ public class SelectorKey {
      * @param value the value
      */
     @JsonCreator
-    public SelectorKey(@JsonProperty("key") String key, @JsonProperty("value") ApprovalTitle value) {
+    SelectorKey(@JsonProperty("key") String key, @JsonProperty("value") ApprovalTitle value) {
         this.key = key;
         this.value = value;
     }

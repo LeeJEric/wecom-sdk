@@ -19,7 +19,7 @@ package cn.felord.api;
  * The type Office api.
  *
  * @author dax
- * @since 2024/3/13 16:22
+ * @since 2024 /3/13 16:22
  */
 public class WedocApi {
     private final WorkWeChatApiClient workWeChatApiClient;
@@ -49,6 +49,15 @@ public class WedocApi {
      */
     public FormApi formApi() {
         return workWeChatApiClient.retrofit().create(FormApi.class);
+    }
+
+    /**
+     * 智能表格
+     *
+     * @return the smart sheet api
+     */
+    public SmartSheetApi smartSheetApi() {
+        return workWeChatApiClient.retrofit().create(SmartSheetApi.class);
     }
 
 }

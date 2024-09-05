@@ -95,7 +95,11 @@ public class GenericResponse<T> extends WeComResponse {
             "living_info",
             "meetingroom_id",
             "ids",
+            "view",
+            "fields",
+            "records",
             "agreeinfo",
+            "properties",
             "lists"
     })
     private T data;
