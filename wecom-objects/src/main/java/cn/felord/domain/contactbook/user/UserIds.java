@@ -25,5 +25,5 @@ import java.util.List;
  */
 @Data
 public class UserIds {
-    private final List<String> useridList;
+    private final List<String> useridlist;
 }
