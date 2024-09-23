@@ -17,9 +17,11 @@ package cn.felord.domain.callback;
 
 import cn.felord.enumeration.NodeStatus;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import lombok.Data;
 
 import java.time.Instant;
+import java.util.List;
 
 /**
  * The type Details.
@@ -37,7 +39,7 @@ public class Details {
     private NodeStatus spStatus;
     @XStreamAlias("SpTime")
     private Instant spTime;
-    @XStreamAlias("Attach")
-    private String attach;
+    @XStreamImplicit(itemFieldName = "Attach")
+    private final List<String> attaches;
 }
 
